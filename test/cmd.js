@@ -33,14 +33,14 @@ describe('express(1)', function () {
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         ctx.stdout = stdout
         ctx.warnings = warnings
-        assert.strictEqual(ctx.files.length, 16)
+        assert.strictEqual(ctx.files.length, 15)
         done()
       })
     })
 
-    it('should print jade view warning', function () {
+    it('should print ejs view warning', function () {
       assert.ok(ctx.warnings.some(function (warn) {
-        return warn === 'the default view engine will not be jade in future releases\nuse `--view=jade\' or `--help\' for additional options'
+        return warn === 'the default view engine will not be ejs in future releases\nuse `--view=ejs\' or `--help\' for additional options'
       }))
     })
 
@@ -54,10 +54,9 @@ describe('express(1)', function () {
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
 
-    it('should have jade templates', function () {
-      assert.notStrictEqual(ctx.files.indexOf('views/error.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('views/index.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('views/layout.jade'), -1)
+    it('should have ejs templates', function () {
+      assert.notStrictEqual(ctx.files.indexOf('views/error.ejs'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('views/index.ejs'), -1)
     })
 
     it('should have a package.json file', function () {
@@ -68,15 +67,15 @@ describe('express(1)', function () {
         '  "version": "0.0.0",\n' +
         '  "private": true,\n' +
         '  "scripts": {\n' +
-        '    "start": "bun ./bin/www.js"\n' +
+        '    "start": "bun ./bin/www.js",\n' +
         '    "dev": "bun --hot ./bin/www.js"\n' +
         '  },\n' +
         '  "dependencies": {\n' +
         '    "cookie-parser": "~1.4.5",\n' +
         '    "debug": "~2.6.9",\n' +
+        '    "ejs": "~2.6.1",\n' +
         '    "express": "~4.17.1",\n' +
         '    "http-errors": "~1.7.2",\n' +
-        '    "jade": "~1.11.0",\n' +
         '    "morgan": "~1.10.0"\n' +
         '  }\n' +
         '}\n')
@@ -128,7 +127,7 @@ describe('express(1)', function () {
       it('should create basic app', function (done) {
         run(ctx0.dir, [], function (err, output) {
           if (err) return done(err)
-          assert.strictEqual(utils.parseCreatedFiles(output, ctx0.dir).length, 16)
+          assert.strictEqual(utils.parseCreatedFiles(output, ctx0.dir).length, 15)
           done()
         })
       })
@@ -148,7 +147,7 @@ describe('express(1)', function () {
       it('should create basic app', function (done) {
         run(ctx1.dir, [], function (err, output) {
           if (err) return done(err)
-          assert.strictEqual(utils.parseCreatedFiles(output, ctx1.dir).length, 16)
+          assert.strictEqual(utils.parseCreatedFiles(output, ctx1.dir).length, 15)
           done()
         })
       })
@@ -203,7 +202,7 @@ describe('express(1)', function () {
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
         ctx.stderr = stderr
         ctx.stdout = stdout
-        assert.strictEqual(ctx.files.length, 17)
+        assert.strictEqual(ctx.files.length, 16)
         done()
       })
     })
@@ -226,10 +225,9 @@ describe('express(1)', function () {
       assert.notStrictEqual(ctx.files.indexOf('foo/package.json'), -1)
     })
 
-    it('should have jade templates', function () {
-      assert.notStrictEqual(ctx.files.indexOf('foo/views/error.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('foo/views/index.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('foo/views/layout.jade'), -1)
+    it('should have ejs templates', function () {
+      assert.notStrictEqual(ctx.files.indexOf('foo/views/error.ejs'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('foo/views/index.ejs'), -1)
     })
   })
 
@@ -271,13 +269,13 @@ describe('express(1)', function () {
         run(ctx.dir, ['--css', 'less'], function (err, stdout) {
           if (err) return done(err)
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
-          assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
+          assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
           done()
         })
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www.js file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -327,69 +325,6 @@ describe('express(1)', function () {
       })
     })
 
-    describe('sass', function () {
-      var ctx = setupTestEnvironment(this.fullTitle())
-
-      it('should create basic app with sass files', function (done) {
-        run(ctx.dir, ['--css', 'sass'], function (err, stdout) {
-          if (err) return done(err)
-          ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
-          assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
-          done()
-        })
-      })
-
-      it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
-        assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
-        assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
-      })
-
-      it('should have sass files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('public/stylesheets/style.sass'), -1, 'should have style.sass file')
-      })
-
-      it('should have node-sass-middleware in package dependencies', function () {
-        var file = path.resolve(ctx.dir, 'package.json')
-        var contents = fs.readFileSync(file, 'utf8')
-        var pkg = JSON.parse(contents)
-        assert.strictEqual(typeof pkg.dependencies['node-sass-middleware'], 'string')
-      })
-
-      it('should have installable dependencies', function (done) {
-        this.timeout(NPM_INSTALL_TIMEOUT)
-        npmInstall(ctx.dir, done)
-      })
-
-      describe('npm start', function () {
-        before('start app', function () {
-          this.app = new AppRunner(ctx.dir)
-        })
-
-        after('stop app', function (done) {
-          this.timeout(APP_START_STOP_TIMEOUT)
-          this.app.stop(done)
-        })
-
-        it('should start app', function (done) {
-          this.timeout(APP_START_STOP_TIMEOUT)
-          this.app.start(done)
-        })
-
-        it('should respond to HTTP request', function (done) {
-          request(this.app)
-            .get('/')
-            .expect(200, /<title>Express<\/title>/, done)
-        })
-
-        it('should respond with stylesheet', function (done) {
-          request(this.app)
-            .get('/stylesheets/style.css')
-            .expect(200, /sans-serif/, done)
-        })
-      })
-    })
-
     describe('stylus', function () {
       var ctx = setupTestEnvironment(this.fullTitle())
 
@@ -397,7 +332,7 @@ describe('express(1)', function () {
         run(ctx.dir, ['--css', 'stylus'], function (err, stdout) {
           if (err) return done(err)
           ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
-          assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
+          assert.strictEqual(ctx.files.length, 15, 'should have 15 files')
           done()
         })
       })
@@ -492,7 +427,7 @@ describe('express(1)', function () {
       run(ctx.dir, ['--git'], function (err, stdout) {
         if (err) return done(err)
         ctx.files = utils.parseCreatedFiles(stdout, ctx.dir)
-        assert.strictEqual(ctx.files.length, 17, 'should have 17 files')
+        assert.strictEqual(ctx.files.length, 16, 'should have 16 files')
         done()
       })
     })
@@ -507,10 +442,9 @@ describe('express(1)', function () {
       assert.notStrictEqual(ctx.files.indexOf('.gitignore'), -1, 'should have .gitignore file')
     })
 
-    it('should have jade templates', function () {
-      assert.notStrictEqual(ctx.files.indexOf('views/error.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('views/index.jade'), -1)
-      assert.notStrictEqual(ctx.files.indexOf('views/layout.jade'), -1)
+    it('should have ejs templates', function () {
+      assert.notStrictEqual(ctx.files.indexOf('views/error.ejs'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('views/index.ejs'), -1)
     })
   })
 

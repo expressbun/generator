@@ -1,9 +1,10 @@
 {
-  "name": "express-generator",
+  "name": "@expressbun/generator",
   "description": "Express' application generator",
-  "version": "4.16.1",
-  "author": "TJ Holowaychuk <tj@vision-media.ca>",
+  "version": "0.1.1",
+  "author": "Harsha Perla",
   "contributors": [
+    "TJ Holowaychuk <tj@vision-media.ca>",
     "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
     "Ciaran Jessup <ciaranj@gmail.com>",
     "Douglas Christopher Wilson <doug@somethingdoug.com>",
@@ -14,7 +15,7 @@
   "keywords": [
     "express",
     "framework",
-    "sinatra",
+    "bun",
     "web",
     "rest",
     "restful",
@@ -22,7 +23,10 @@
     "app",
     "api"
   ],
-  "repository": "expressjs/generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expressbun/generator"
+  },
   "license": "MIT",
   "dependencies": {
     "ejs": "2.6.2",
@@ -51,7 +55,7 @@
     "validate-npm-package-name": "3.0.0"
   },
   "engines": {
-    "node": ">= 0.10"
+    "bun": ">= 1.0"
   },
   "files": [
     "LICENSE",
@@ -62,5 +66,12 @@
     "lint": "eslint .",
     "test": "mocha --reporter spec --bail --check-leaks test/",
     "test-ci": "mocha --reporter spec --check-leaks test/"
+  },
+  "bugs": {
+    "url": "https://github.com/expressbun/generator/issues"
+  },
+  "homepage": "https://github.com/expressbun/generator#readme",
+  "directories": {
+    "test": "test"
   }
 }

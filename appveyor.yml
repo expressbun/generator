@@ -76,7 +76,7 @@ install:
         npm rebuild
       }
   # Install Node.js modules
-  - npm install
+  - bun install
 build: off
 test_script:
   # Output version data
