@@ -2,12 +2,12 @@
 [![Bun Logo](https://seeklogo.com/images/B/bun-logo-A876328A1F-seeklogo.com.png)](https://bun.sh/)
 [![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
 
-[Express'](https://www.npmjs.com/package/express) and Bun application generator. Based on express generator with tweaks to support bun run time and hot reload.
+[Express](https://www.npmjs.com/package/express) application generator for Bun. Based on express generator with tweaks to support bun run time and hot reload.
 
 ## Installation
 
 ```sh
-$ npm install -g express-bun
+$ bunx @expressbun/generator
 ```
 
 ## Quick Start
@@ -17,7 +17,9 @@ The quickest way to get started with express is to utilize the executable `expre
 Create the app:
 
 ```bash
-$ express --view=hbs /tmp/foo && cd /tmp/foo
+$ bun install
+$ bun dev
+
 ```
 
 Install dependencies:
@@ -43,7 +45,7 @@ This generator can also be further configured with the following command line fl
     -H, --hogan          add hogan.js engine support
     -v, --view <engine>  add view <engine> support (dust|ejs|hbs|hjs|jade|pug|twig|vash) (defaults to ejs)
         --no-view        use static html instead of view engine
-    -c, --css <engine>   add stylesheet <engine> support (less|stylus|compass|sass) (defaults to plain css)
+    -c, --css <engine>   add stylesheet <engine> support (less|stylus|compass) (defaults to plain css)
         --git            add .gitignore
     -f, --force          force on non-empty directory
     -h, --help           output usage information
