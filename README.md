@@ -1,16 +1,13 @@
+
+[![Bun Logo](https://seeklogo.com/images/B/bun-logo-A876328A1F-seeklogo.com.png)](https://bun.sh/)
 [![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
 
-[Express'](https://www.npmjs.com/package/express) application generator.
-
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
-[![Linux Build][github-actions-ci-image]][github-actions-ci-url]
-[![Windows Build][appveyor-image]][appveyor-url]
+[Express'](https://www.npmjs.com/package/express) and Bun application generator. Based on express generator with tweaks to support bun run time and hot reload.
 
 ## Installation
 
 ```sh
-$ npm install -g express-generator
+$ npm install -g express-bun
 ```
 
 ## Quick Start
