@@ -95,7 +95,7 @@ function createApplication (name, dir, options, done) {
     version: '0.0.0',
     private: true,
     scripts: {
-      start: 'node ./bin/www'
+      start: 'bun ./bin/www.js'
     },
     dependencies: {
       debug: '~2.6.9',
@@ -105,7 +105,7 @@ function createApplication (name, dir, options, done) {
 
   // JavaScript
   var app = loadTemplate('js/app.js')
-  var www = loadTemplate('js/www')
+  var www = loadTemplate('js/www.js')
 
   // App name
   www.locals.name = name
@@ -286,7 +286,7 @@ function createApplication (name, dir, options, done) {
   write(path.join(dir, 'app.js'), app.render())
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
   mkdir(dir, 'bin')
-  write(path.join(dir, 'bin/www'), www.render(), MODE_0755)
+  write(path.join(dir, 'bin/www.js'), www.render(), MODE_0755)
 
   var prompt = launchedFromCmd() ? '>' : '$'
 

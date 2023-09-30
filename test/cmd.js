@@ -49,7 +49,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
@@ -68,7 +68,8 @@ describe('express(1)', function () {
         '  "version": "0.0.0",\n' +
         '  "private": true,\n' +
         '  "scripts": {\n' +
-        '    "start": "node ./bin/www"\n' +
+        '    "start": "bun ./bin/www.js"\n' +
+        '    "dev": "bun --hot ./bin/www.js"\n' +
         '  },\n' +
         '  "dependencies": {\n' +
         '    "cookie-parser": "~1.4.5",\n' +
@@ -220,7 +221,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('foo/bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('foo/bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('foo/app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('foo/package.json'), -1)
     })
@@ -276,7 +277,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -339,7 +340,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -402,7 +403,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www.js file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -473,7 +474,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www.js file')
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
     })
@@ -497,7 +498,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www.js file')
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
     })
@@ -549,7 +550,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
@@ -604,7 +605,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
@@ -635,7 +636,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
@@ -698,7 +699,7 @@ describe('express(1)', function () {
     })
 
     it('should have basic files', function () {
-      assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+      assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
       assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
     })
@@ -775,7 +776,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -839,7 +840,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1, 'should have bin/www file')
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1, 'should have bin/www file')
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1, 'should have app.js file')
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1, 'should have package.json file')
       })
@@ -903,7 +904,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
       })
@@ -968,7 +969,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
       })
@@ -1032,7 +1033,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
       })
@@ -1097,7 +1098,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
       })
@@ -1162,7 +1163,7 @@ describe('express(1)', function () {
       })
 
       it('should have basic files', function () {
-        assert.notStrictEqual(ctx.files.indexOf('bin/www'), -1)
+        assert.notStrictEqual(ctx.files.indexOf('bin/www.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('app.js'), -1)
         assert.notStrictEqual(ctx.files.indexOf('package.json'), -1)
       })
