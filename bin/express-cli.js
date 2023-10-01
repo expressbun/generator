@@ -292,14 +292,14 @@ function createApplication (name, dir, options, done) {
 
   console.log()
   console.log('   install dependencies:')
-  console.log('     %s npm install', prompt)
+  console.log('     %s bun install', prompt)
   console.log()
   console.log('   run the app:')
 
   if (launchedFromCmd()) {
-    console.log('     %s SET DEBUG=%s:* & npm start', prompt, name)
+    console.log('     %s SET DEBUG=%s:* & bun dev', prompt, name)
   } else {
-    console.log('     %s DEBUG=%s:* npm start', prompt, name)
+    console.log('     %s DEBUG=%s:* bun dev', prompt, name)
   }
 
   console.log()
